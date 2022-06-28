@@ -28,22 +28,26 @@ class Tree {
     constructor(){
         this.root = null;
     }
-    traverseBF(fn){
-        const queue = [];
+    traverseBF(){
+        const queue = [],values = [];
         queue.push(this.root);
         while(queue.length){
             let curr = queue.shift();
+            values.push(curr.data)
             queue.push(...curr.children)
-            fn(curr)
         }
+        return values
     }
-    traverseDF(fn){
-        const stack = [this.root];
-        while(stack.length){
-            let node = stack.shift();
-            stack.unshift(...node.children)
-            fn(node)
+    traverseDF(){
+        const values = [];
+        function traverse(node){
+            values.push(node.data);
+            node.children.forEach(child => {
+                traverse(child)
+            })
         }
+        if(this.root) traverse(this.root)
+        return values
     }
 }
 

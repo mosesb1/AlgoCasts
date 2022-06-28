@@ -36,31 +36,25 @@ describe('Tree', () => {
   });
 
   test('Can traverse bf', () => {
-    const letters = [];
     const t = new Tree();
     t.root = new Node('a');
     t.root.add('b');
     t.root.add('c');
     t.root.children[0].add('d');
 
-    t.traverseBF(node => {
-      letters.push(node.data);
-    });
+    const letters = t.traverseBF()
 
     expect(letters).toEqual(['a', 'b', 'c', 'd']);
   });
 
   test('Can traverse DF', () => {
-    const letters = [];
     const t = new Tree();
     t.root = new Node('a');
     t.root.add('b');
     t.root.add('d');
     t.root.children[0].add('c');
 
-    t.traverseDF(node => {
-      letters.push(node.data);
-    });
+    const letters = t.traverseDF()
 
     expect(letters).toEqual(['a', 'b', 'c', 'd']);
   });
