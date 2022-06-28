@@ -14,6 +14,13 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+    let size = n*2 - 1;
+    for(let i = 1; i <= n; i++){
+        let hashes = i*2 - 1;
+        let sides = (size - hashes) / 2;
+        console.log(' '.repeat(sides) + '#'.repeat(hashes) + ' '.repeat(sides))
+    }
+}
 
 module.exports = pyramid;
