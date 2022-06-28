@@ -12,6 +12,18 @@
 //   c.next = b;
 //   circular(l) // true
 
-function circular(list) {}
+function circular(list) {
+    const values = [];
+    let curr = list.head;
+    while(curr){
+        if(values.includes(curr.data)){
+            return true
+        } else {
+            values.push(curr.data)
+            curr = curr.next
+        }
+    }
+    return false
+}
 
 module.exports = circular;
